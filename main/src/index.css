@@ -1,0 +1,279 @@
+/* ═══════════════════════════════════════════════════════════════
+   NEONFORGE UI — Design System & Global Styles
+   Cyberpunk / Futuristic / Sci-Fi Theme
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── CSS Custom Properties (Design Tokens) ─── */
+:root {
+  /* Primary Palette */
+  --acid-lime: #B4FF00;
+  --acid-lime-rgb: 180, 255, 0;
+  --acid-lime-dim: #8BC700;
+  --acid-lime-bright: #D4FF66;
+  --matrix-green: #0B1A12;
+  --matrix-green-rgb: 11, 26, 18;
+  --matrix-deep: #060D09;
+  --matrix-light: #132B1C;
+  --matrix-lighter: #1A3D26;
+  
+  /* Neutrals */
+  --bg-primary: #050A07;
+  --bg-secondary: #0A140E;
+  --bg-tertiary: #0F1F15;
+  --bg-card: rgba(15, 31, 21, 0.6);
+  --bg-card-hover: rgba(20, 45, 28, 0.8);
+  --bg-glass: rgba(11, 26, 18, 0.4);
+  --bg-glass-heavy: rgba(11, 26, 18, 0.7);
+  
+  /* Text */
+  --text-primary: #E8FFE8;
+  --text-secondary: #8BAF8B;
+  --text-muted: #4A6B4A;
+  --text-accent: var(--acid-lime);
+  
+  /* Borders */
+  --border-subtle: rgba(180, 255, 0, 0.08);
+  --border-default: rgba(180, 255, 0, 0.15);
+  --border-strong: rgba(180, 255, 0, 0.3);
+  --border-glow: rgba(180, 255, 0, 0.5);
+  
+  /* Glow Effects */
+  --glow-sm: 0 0 10px rgba(180, 255, 0, 0.15);
+  --glow-md: 0 0 20px rgba(180, 255, 0, 0.2);
+  --glow-lg: 0 0 40px rgba(180, 255, 0, 0.25);
+  --glow-xl: 0 0 60px rgba(180, 255, 0, 0.3), 0 0 100px rgba(180, 255, 0, 0.1);
+  --glow-text: 0 0 10px rgba(180, 255, 0, 0.5), 0 0 20px rgba(180, 255, 0, 0.3);
+  --glow-neon: 0 0 5px rgba(180, 255, 0, 0.8), 0 0 15px rgba(180, 255, 0, 0.4), 0 0 30px rgba(180, 255, 0, 0.2);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.6);
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Typography */
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Orbitron', sans-serif;
+  
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  
+  /* Layout */
+  --sidebar-width: 260px;
+  --navbar-height: 0px;
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 255, 0, 0.2);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 255, 0, 0.4);
+}
+
+/* Selection */
+::selection {
+  background: rgba(180, 255, 0, 0.3);
+  color: var(--acid-lime);
+}
+
+/* ─── Keyframe Animations ─── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: var(--glow-text);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+@keyframes border-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Utility Classes ─── */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-heavy {
+  background: var(--bg-glass-heavy);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid var(--border-default);
+}
+
+.neon-border {
+  border: 1px solid var(--border-glow);
+  box-shadow: var(--glow-sm), inset 0 0 20px rgba(180, 255, 0, 0.03);
+}
+
+.neon-text {
+  color: var(--acid-lime);
+  text-shadow: var(--glow-text);
+}
+
+/* ─── App Layout ─── */
+#root {
+  min-height: 100vh;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding-top: 0;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* ─── Background Effects ─── */
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(180, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 255, 0, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-radial {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(180, 255, 0, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Toast Overrides ─── */
+.toast-custom {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-glow) !important;
+  box-shadow: var(--glow-md) !important;
+  font-family: var(--font-body) !important;
+}

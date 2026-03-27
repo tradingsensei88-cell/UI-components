@@ -1,0 +1,7 @@
+.app-wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+.main-content.sidebar-closed {
+  margin-left: 0 !important;
+}
